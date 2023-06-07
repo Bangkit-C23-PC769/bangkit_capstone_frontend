@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'utils/color_schemes.g.dart';
 import 'screens/login_page.dart';
 
 void main() {
-  runApp(const CommuteEase());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+  .then((value) => runApp(const CommuteEase()));
 }
 
 class CommuteEase extends StatefulWidget {
@@ -22,10 +25,6 @@ class _CommuteEaseState extends State<CommuteEase> {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: darkColorScheme,
       ),
       home: const LoginPage()
     );
